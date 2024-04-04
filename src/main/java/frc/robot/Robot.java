@@ -55,7 +55,7 @@ public class Robot extends LoggedRobot {
   @Override
   public void robotInit() {
     // Record metadata about robot code
-    Logger.recordMetadata("ProjectName", "2024-Robot");
+    Logger.recordMetadata("ProjectName", "2024-YAGSL");
     Logger.recordMetadata("RuntimeType", getRuntimeType().toString());
     Logger.recordMetadata("BuildDate", BuildConstants.BUILD_DATE);
     Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA);

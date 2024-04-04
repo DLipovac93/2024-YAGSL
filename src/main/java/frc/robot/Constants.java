@@ -19,6 +19,7 @@ import swervelib.math.Matter;
  */
 public final class Constants {
 
+  //TODO: CHANGE THIS OFTEN!!!!
   public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
   public static final Matter CHASSIS =
       new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
@@ -30,24 +31,13 @@ public final class Constants {
     public static final PIDConstants ANGLE_PID = new PIDConstants(0.4, 0, 0.01);
   }
 
+  // Can this stay the same
   public static final class HardwareConstants {
     public static final int REV_PDH_ID = 60;
     public static final int REV_PH_ID = 61;
   }
 
-  public static final class PneumaticsConstants {
-    public static final class DumpConstants {
-      // Uppy Downy solonoid
-      public static final int OUT = 15;
-      public static final int IN = 13;
-    }
-
-    public static final class ElevatorConstants {
-      // upy downy chain lift thing
-      public static final int IN = 11;
-      public static final int OUT = 10;
-    }
-  }
+  
 
   public static final class Drivebase {
 
