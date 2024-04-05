@@ -19,7 +19,7 @@ import swervelib.math.Matter;
  */
 public final class Constants {
 
-  //TODO: CHANGE THIS OFTEN!!!!
+  // TODO: CHANGE THIS OFTEN!!!!
   public static final double ROBOT_MASS = (148 - 20.3) * 0.453592; // 32lbs * kg per pound
   public static final Matter CHASSIS =
       new Matter(new Translation3d(0, 0, Units.inchesToMeters(8)), ROBOT_MASS);
@@ -34,10 +34,7 @@ public final class Constants {
   // Can this stay the same
   public static final class HardwareConstants {
     public static final int REV_PDH_ID = 60;
-    public static final int REV_PH_ID = 61;
   }
-
-  
 
   public static final class Drivebase {
 
