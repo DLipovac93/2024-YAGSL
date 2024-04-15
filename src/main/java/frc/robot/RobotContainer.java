@@ -5,7 +5,6 @@
 package frc.robot;
 
 import com.pathplanner.lib.auto.AutoBuilder;
-import com.pathplanner.lib.auto.NamedCommands;
 import edu.wpi.first.math.MathUtil;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -21,20 +20,7 @@ import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.Constants.OperatorConstants;
-import frc.robot.commands.ConveyorCommand;
-import frc.robot.commands.DumpControl;
-import frc.robot.commands.ElevatorControl;
-import frc.robot.commands.FlyWCommand;
-import frc.robot.commands.IntakeCommand;
-import frc.robot.commands.auto.SHOOTCONVEYOR;
-import frc.robot.commands.auto.SHOOTFLYS;
-import frc.robot.commands.autoCommands.dumpBed;
 import frc.robot.commands.swervedrive.drivebase.AbsoluteDriveAdv;
-import frc.robot.subsystems.Conveyor;
-import frc.robot.subsystems.Dump;
-import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.FlyWheel;
-import frc.robot.subsystems.Intake;
 import frc.robot.subsystems.Vision;
 import frc.robot.subsystems.swervedrive.SwerveSubsystem;
 import java.io.File;
@@ -60,12 +46,6 @@ public class RobotContainer {
   // CommandJoystick driverController   = new
   // CommandJoystick(3);//(OperatorConstants.DRIVER_CONTROLLER_PORT);
   XboxController driverXbox = new XboxController(0);
-  // Connect
-  private final Intake intake = new Intake();
-  private final Dump dump = new Dump();
-  private final Conveyor conveyor = new Conveyor();
-  private final FlyWheel FlyWheel = new FlyWheel();
-  private final Elevator elevator = new Elevator();
 
   private final LoggedDashboardChooser<Command> autoChooser;
 
@@ -74,26 +54,9 @@ public class RobotContainer {
   private final PhotonCamera intakeCamera = vision.getIntakeCamera();
   private final PhotonCamera conveyorCamera = vision.getConveyorCamera();
 
-  private final SHOOTCONVEYOR shootconveyorcmd = new SHOOTCONVEYOR(conveyor);
-  private final SHOOTFLYS shootflyscmd = new SHOOTFLYS(FlyWheel);
-
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
 
-    intake.setDefaultCommand(new IntakeCommand(intake));
-    dump.setDefaultCommand(new DumpControl(dump));
-    conveyor.setDefaultCommand(new ConveyorCommand(conveyor));
-    FlyWheel.setDefaultCommand(new FlyWCommand(FlyWheel));
-    elevator.setDefaultCommand(new ElevatorControl(elevator));
-    // Register Named Commands
-    NamedCommands.registerCommand(
-        "shootConveyor", new InstantCommand(() -> conveyor.intakeConveyor()));
-    NamedCommands.registerCommand(
-        "shootFlyWheel", new InstantCommand(() -> FlyWheel.enableflywheelfull()));
-    NamedCommands.registerCommand("dump", new InstantCommand(() -> dump.open()));
-    NamedCommands.registerCommand("Dump bed", new dumpBed(dump));
-    NamedCommands.registerCommand("SHOOTCONVEYOR", shootconveyorcmd);
-    NamedCommands.registerCommand("SHOOTFLYS", shootflyscmd);
     // Configure the trigger bindings
     configureBindings();
 
